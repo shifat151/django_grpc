@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package profileservice;
+// ProfileService is a gRPC service that defines various RPC methods related to user profiles.
+service ProfileService {
+  // CreateProfile Method:
+  // Creates a user profile based on the provided request.
+  //
+  // Request:
+  //   - first_name: The first_name of the user.
+  //     Field number: 1
+  //   - last_name: The last_name of the user.
+  //     Field number: 2
+  //   - email: email of the user.
+  //     Field number: 3
+  //
+  // Response:
+  //   - status: The status of the create profile operation.
+  //     Field number: 1
+  //   - msg: A human-readable message providing additional information about the operation.
+  //     Field number: 2
+  //   - error: If an error occurred, this field contains a human-readable error message.
+  //     Field number: 3
+  rpc CreateProfile(CreateProfileRequest) returns (CreateProfileResponse) {};
+}
+message CreateProfileRequest {
+  string first_name= 1;
+  string last_name = 2;
+  string email = 3;
+}
+message CreateProfileResponse {
+  int32 status = 1;
+  string msg = 2;
+  string error = 3;
+}
